@@ -46,7 +46,7 @@
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Script/ScriptController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.6666667">
-              <caret line="108" column="26" selection-start-line="108" selection-start-column="26" selection-end-line="108" selection-end-column="26" />
+              <caret line="108" column="24" selection-start-line="108" selection-start-column="24" selection-end-line="108" selection-end-column="24" />
               <folding>
                 <element signature="e#47#75#0#PHP" expanded="true" />
               </folding>
@@ -1205,7 +1205,7 @@
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Script/ScriptController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6666667">
-          <caret line="108" column="26" selection-start-line="108" selection-start-column="26" selection-end-line="108" selection-end-column="26" />
+          <caret line="108" column="24" selection-start-line="108" selection-start-column="24" selection-end-line="108" selection-end-column="24" />
           <folding>
             <element signature="e#47#75#0#PHP" expanded="true" />
           </folding>

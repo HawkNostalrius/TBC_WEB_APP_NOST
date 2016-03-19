@@ -106,7 +106,7 @@ class ScriptController extends Controller
 
         $script->title = $request->input('title');
         $script->content = $request->input('content');
-        $script->save();é 
+        $script->save();
 
         flash()->overlay("Your script has been updated successfully", "Success");
         return Redirect::to("script");
