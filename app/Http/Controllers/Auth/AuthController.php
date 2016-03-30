@@ -37,13 +37,11 @@ class AuthController extends Controller
     protected $redirectTo = '/';
 
     /**
-     * Change email to username when authenticating
+     * Change email to login when authenticating
      *
      * @var string
      */
-    protected $username = "username";
-
-    protected $model = "account";
+    protected $username = "login";
 
     /**
      * Create a new authentication controller instance.

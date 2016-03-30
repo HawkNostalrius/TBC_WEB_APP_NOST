@@ -25,22 +25,14 @@
 
 Route::group(['middleware' => ['web']], function () {
 
-
     Route::get('auth/login', 'Auth\AuthController@getLogin');
     Route::post('auth/login', 'Auth\AuthController@postLogin');
-
-
-    Route::get('about', 'PagesController@index');
-
 
 });
 
 Route::group(['middleware' => ['web', 'auth']], function () {
 
     Route::get('auth/logout', 'Auth\AuthController@getLogout');
-
-    //Route::get('auth/login', )
-
 
     Route::get('/', function () {
         return view('dashboard.dashboard');

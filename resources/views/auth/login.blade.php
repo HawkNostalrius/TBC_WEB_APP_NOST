@@ -9,7 +9,7 @@
 
             <div class="form-group">
                 <label for="inputUsername">Username</label>
-                <input type="text" class="form-control" id="inputUsername" placeholder="Username" name="username" value="{{ old('username') }}" required>
+                <input type="text" class="form-control" id="inputUsername" placeholder="Login" name="login" value="{{ old('login') }}" required>
             </div>
 
             <div class="form-group">

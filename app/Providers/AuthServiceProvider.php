@@ -2,11 +2,13 @@
 
 namespace App\Providers;
 
+use App\Models\Permission;
 use App\Auth\CustomUserProvider;
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Foundation\Application;
 use Auth;
+use Log;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -29,8 +31,15 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies($gate);
 
+        /**
+         * Override hash methods
+         */
         Auth::provider('custom', function(Application $app, $model) {
             return new CustomUserProvider($app['hash'], $model['model']);
         });
+
+        Log::info("Foobar Boot AUthServiceProvider");
+        //foreach ($this->getPer)
+
     }
 }

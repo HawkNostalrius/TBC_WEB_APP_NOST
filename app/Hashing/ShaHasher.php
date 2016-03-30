@@ -23,12 +23,8 @@ class ShaHasher implements HasherContract
     public function make($value, array $options = [])
     {
         $user = $options["user"];
-        Log::info("ShaHasher - foobar1");
 
-        Log::info($value);
-        Log::info($options);
-
-        $sha_pass = sha1(strtoupper($user->username) . ':' . strtoupper($value));
+        $sha_pass = sha1(strtoupper($user->login) . ':' . strtoupper($value));
 
         Log::info("Shapass : " . $sha_pass);
         return $sha_pass;

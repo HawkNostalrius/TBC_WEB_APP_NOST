@@ -4,17 +4,18 @@
             <a href="#">
                 <strong>Dashboard</strong>
             </a>
-        </li>
+            </li>
         <li>
             <a href="{!! url('/profil') !!}">Profil</a>
         </li>
         <li>
-            <a href="{!! url('/script') !!}">Scripts</a>
+            <a href="{!! url('/script') !!}">
+            @if (Auth::user()->hasRole('admin'))
+                All Users/Scripts
+            @else
+                My Scripts
+            @endif
+            </a>
         </li>
-        @if (Auth::user()->gm_level == 4)
-            <li>
-                <a href="#">All Users/Scripts</a>
-            </li>
-        @endif
     </ul>
 </div>

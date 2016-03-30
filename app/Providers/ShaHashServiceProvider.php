@@ -22,12 +22,6 @@ class ShaHashServiceProvider extends HashServiceProvider
     public function boot()
     {
         parent::boot();
-
-        $this->app->bind('hash', function()
-        {
-            Log::info("Create New ShaHasher object");
-            return new ShaHasher();
-        });
     }
 
     /**
@@ -37,7 +31,9 @@ class ShaHashServiceProvider extends HashServiceProvider
      */
     public function register()
     {
+        //Create ShaHasher instead of default hash class
         $this->app->singleton('hash', function () {
+            Log::info("singleton hash method");
             return new ShaHasher();
         });
     }

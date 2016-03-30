@@ -12,11 +12,11 @@ class CreateScriptsTable extends Migration
      */
     public function up()
     {
-        Schema::create('scripts', function (Blueprint $table) {
+        Schema::create('script', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
             $table->string('content');
-            $table->unsignedInteger('account_id');
+            $table->unsignedInteger('user_id');
             $table->enum('status',
                 ['WaitingAdminConfirmForTest',
                     'AcceptedForTestStep',
@@ -29,48 +29,50 @@ class CreateScriptsTable extends Migration
             $table->timestamps();
         });
 
-        DB::table('scripts')->insert(
+        DB::table('script')->insert(
             array(
                 'title' => 'Title test script 1',
                 'content' => "Test Content for script",
-                'account_id' => 1,
+                'user_id' => 1,
                 'status' => 'WaitingAdminConfirmForTest'
             ));
-        DB::table('scripts')->insert(
+        DB::table('script')->insert(
             array(
                 'title' => 'Title test script 2',
                 'content' => "Test Content for script",
-                'account_id' => 1,
+                'user_id' => 1,
                 'status' => 'AcceptedForTestStep'
             ));
-        DB::table('scripts')->insert(
+        DB::table('script')->insert(
             array(
                 'title' => 'Title test script 3',
                 'content' => "Test Content for script",
-                'account_id' => 1,
+                'user_id' => 1,
                 'status' => 'Testing'
             ));
-        DB::table('scripts')->insert(
+        DB::table('script')->insert(
             array(
                 'title' => 'Title test script 4',
                 'content' => "Test Content for script",
-                'account_id' => 1,
+                'user_id' => 1,
                 'status' => 'AcceptedAfterTest'
             ));
-        DB::table('scripts')->insert(
+        DB::table('script')->insert(
             array(
                 'title' => 'Title test script 5',
                 'content' => "Test Content for script",
-                'account_id' => 1,
+                'user_id' => 1,
             'status' => 'RefusedAfterTest'
             ));
-        DB::table('scripts')->insert(
+        DB::table('script')->insert(
             array(
                 'title' => 'Title test script 6',
                 'content' => "Test Content for script",
-                'account_id' => 1,
+                'user_id' => 1,
                 'status' => 'WaitingAdminConfirmForTest'
             ));
+
+
     }
 
     /**
@@ -80,6 +82,6 @@ class CreateScriptsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('scripts');
+        Schema::drop('script');
     }
 }

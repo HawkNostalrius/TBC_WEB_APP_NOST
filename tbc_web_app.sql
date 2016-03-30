@@ -79,7 +79,7 @@ CREATE TABLE `scripts` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `content` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `account_id` int(10) unsigned NOT NULL,
+  `user_id` int(10) unsigned NOT NULL,
   `status` enum('WaitingAdminConfirmForTest','AcceptedForTestStep','Testing','AcceptedAfterTest','RefusedAfterTest') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'WaitingAdminConfirmForTest',
   `updated_admin_by` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `updated_admin_at` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,

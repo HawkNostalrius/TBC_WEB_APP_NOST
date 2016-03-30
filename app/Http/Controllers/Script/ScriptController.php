@@ -16,6 +16,11 @@ class ScriptController extends Controller
 {
     private $rowsPerPage = 10;
 
+    public function __construct()
+    {
+        //$this->middleware('script');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -23,8 +28,18 @@ class ScriptController extends Controller
      */
     public function index()
     {
-        $currUser = Auth::user();
-        $scripts = Script::where('account_id', $currUser->id)->paginate($this->rowsPerPage);
+        $user = Auth::user();
+        $scripts = null;
+
+        Log::info("Lol");
+        if ($user->hasRole('admin'))
+        {
+            $scripts = Script::paginate($this->rowsPerPage);
+        }
+        else
+        {
+            $scripts = Script::where('user_id', $user->id)->paginate($this->rowsPerPage);
+        }
 
         return view('scripts.index', compact('scripts'));
     }
@@ -52,7 +67,7 @@ class ScriptController extends Controller
     {
         $currUser = Auth::user();
         $script = Script::create($request->all());
-        $script->fill(['account_id' => $currUser->id]);
+        $script->fill(['user_id' => $currUser->id]);
         $script->save();
         flash()->overlay('Your article has been created', 'Thanks');
         return Redirect::to('script');
@@ -98,8 +113,8 @@ class ScriptController extends Controller
 
         $script = Script::find($id);
 
-        if ($script->status == "WaitingAdminConfirmForTest" ||
-            $script->status == "RefusedAfterTest") {
+        if ($script->status != "WaitingAdminConfirmForTest" &&
+            $script->status != "RefusedAfterTest") {
             flash()->overlay("You cannot modify this script", "Error");
             return redirect()->back();
         }

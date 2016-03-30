@@ -9,8 +9,15 @@ class Script extends Model
     protected $fillable = [
         'title',
         'content',
-        'account_id'
+        'user_id'
     ];
 
+    protected $table = "script";
+
     //
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

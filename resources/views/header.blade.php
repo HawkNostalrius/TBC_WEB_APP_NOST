@@ -18,7 +18,7 @@
         <p class="navbar-text">
             Signed in as
             @if (Auth::user())
-                {!! Auth::user()->username !!}
+                {!! Auth::user()->login !!}
             @else
                 Guest
             @endif

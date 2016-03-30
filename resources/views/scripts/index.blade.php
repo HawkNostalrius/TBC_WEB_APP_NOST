@@ -11,7 +11,7 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-lg-2 col-lg-offset-10">
-                        <a href="{{ action("Script\ScriptController@create") }}">
+                        <a href="{{ action('Script\ScriptController@create') }}">
                             <button type="button" class="btn btn-primary">Add script</button>
                         </a>
                     </div>
@@ -27,6 +27,11 @@
                         <th>
                             <strong>Created at</strong>
                         </th>
+                        @if (Auth::user()->hasRole('admin'))
+                            <th>
+                                <strong>Created By</strong>
+                            </th>
+                        @endif
                         <th>
                             <strong>Status</strong>
                         </th>
@@ -35,15 +40,20 @@
                     <tbody class="body-list-scripts">
                     @foreach($scripts as $script)
                             <tr>
-                            <td class="col-lg-4">
+                            <td class="col-lg-6">
                                 <a href="{!! action('Script\ScriptController@show', ['id' => $script->id]) !!}">
                                     {{ $script->title }}
                                 </a>
                             </td>
-                            <td class="col-lg-4">
+                            <td class="col-lg-2">
                                 {{ $script->created_at or "Unknown" }}
                             </td>
-                            <td class="col-lg-4">
+                                @if (Auth::user()->hasRole('admin'))
+                                    <td class="col-lg-2">
+                                        {{ $script->user()->first()->login }}
+                                    </td>
+                                @endif
+                            <td class="col-lg-2">
                                 <?php
                                     $btnClassColor = "btn-primary";
                                     $btnStatusMessage = "Waiting to be confirmed by an admin";

@@ -10,8 +10,8 @@
             </div>
             <div class="panel-body">
                 <div class="voffset3">
-                    {!! Form::label('', 'Username', array('class' => 'control-label')) !!}
-                    {!! Form::text('', Auth::user()->username, array('class' => 'form-control', 'disabled')) !!}
+                    {!! Form::label('', 'Login', array('class' => 'control-label')) !!}
+                    {!! Form::text('', Auth::user()->login, array('class' => 'form-control', 'disabled')) !!}
                 </div>
                 <div class="voffset3">
                     {!! Form::label('', 'Email', array('class' => 'control-label')) !!}

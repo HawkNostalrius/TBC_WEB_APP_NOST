@@ -12,9 +12,9 @@ class CreateAccountTable extends Migration
      */
     public function up()
     {
-        Schema::create('account', function (Blueprint $table) {
+        Schema::create('user', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('username');
+            $table->string('login');
             $table->string('email')->unique();
             $table->string('password', 60);
             $table->tinyInteger('gm_level')->default(0);
@@ -24,10 +24,30 @@ class CreateAccountTable extends Migration
         /**
          * TODO A DELETE POUR LA PRODUCTION
          */
-        DB::table('account')->insert(
+        DB::table('user')->insert(
             array(
-                'username' => 'test',
+                'login' => 'test',
+                'email' => 'test@gmail.com',
+                'gm_level' => 1,
                 'password' => '3d0d99423e31fcc67a6745ec89d70d700344bc76'
+            )
+        );
+
+        DB::table('user')->insert(
+            array(
+                'login' => 'Daemon',
+                'email' => 'Daemon.nostalrius@gmail.com',
+                'gm_level' => 4,
+                'password' => '8c055a39c987202958bef1b9b38f387397eb1dd8'
+            )
+        );
+
+        DB::table('user')->insert(
+            array(
+                'login' => 'Viper',
+                'email' => 'Viper.nostalrius@gmail.com',
+                'gm_level' => 4,
+                'password' => 'd150544b7e83b226c94dc49de994c0580402a2b4'
             )
         );
     }
@@ -39,6 +59,6 @@ class CreateAccountTable extends Migration
      */
     public function down()
     {
-        Schema::drop('account');
+        Schema::drop('user');
     }
 }
