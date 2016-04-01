@@ -42,7 +42,7 @@ class User extends Authenticatable
     public function hasRole($role)
     {
         $name = is_string($role) ? $role : $role->name;
-
+        Log::info($this->roles()->where('name', $name)->first() != null ? "est != de null" : "==  a null");
         return $this->roles()->where('name', $name)->first() != null ? true : false;
     }
 

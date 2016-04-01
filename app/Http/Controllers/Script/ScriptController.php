@@ -12,13 +12,20 @@ use Log;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\CreateScriptRequest;
 
+/**
+ * Class ScriptController
+ * @package App\Http\Controllers\Script
+ */
 class ScriptController extends Controller
 {
     private $rowsPerPage = 10;
 
+    const AUTHORIZED_STATUS_FOR_UPDATE = array('WaitingAdminConfirmForTest');
+
     public function __construct()
     {
-        //$this->middleware('script');
+        Log::info('contrusct script controller');
+        $this->middleware('script');
     }
 
     /**
@@ -51,6 +58,10 @@ class ScriptController extends Controller
      */
     public function create()
     {
+        /**
+         * $action and $method able to continue to the right form action
+         * In the create method we will perform store method
+         */
         $action = "store";
         $method = "POST";
 
@@ -60,17 +71,16 @@ class ScriptController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param CreateScriptRequest|Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(CreateScriptRequest $request)
     {
-        $currUser = Auth::user();
         $script = Script::create($request->all());
-        $script->fill(['user_id' => $currUser->id]);
+        $script->fill(['user_id' => Auth::user()->id]);
         $script->save();
         flash()->overlay('Your article has been created', 'Thanks');
-        return Redirect::to('script');
+        return redirect()->action('Script\ScriptController@index');
     }
 
     /**
@@ -83,11 +93,14 @@ class ScriptController extends Controller
     {
         $script = Script::find($id);
 
+        /**
+         * $action and $method able to continue to the right form action
+         * In the create method we will perform store method
+         */
         $action = "update";
         $method = "PUT";
 
         return view('scripts.form', compact('method', 'action', 'script'));
-        //
     }
 
     /**
@@ -102,19 +115,37 @@ class ScriptController extends Controller
     }
 
     /**
+     * Check if script's status able to update script
+     * Authorized status are in constant class
+     *
+     * @param $script
+     * @return bool
+     */
+    public function statusAbleUpdate($script)
+    {
+        foreach ($this::AUTHORIZED_STATUS_FOR_UPDATE as $status)
+        {
+            if ($script->status == $status)
+            {
+                return (true);
+            }
+        }
+        return false;
+    }
+
+    /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param CreateScriptRequest|Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(CreateScriptRequest $request, $id)
     {
-
         $script = Script::find($id);
 
-        if ($script->status != "WaitingAdminConfirmForTest" &&
-            $script->status != "RefusedAfterTest") {
+        if (!$this->statusAbleUpdate($script))
+        {
             flash()->overlay("You cannot modify this script", "Error");
             return redirect()->back();
         }
@@ -124,7 +155,7 @@ class ScriptController extends Controller
         $script->save();
 
         flash()->overlay("Your script has been updated successfully", "Success");
-        return Redirect::to("script");
+        return redirect()->action('Script\ScriptController@index');
     }
 
     /**
@@ -135,6 +166,15 @@ class ScriptController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $script = Script::find($id);
+        /**
+         * Redirect if user is not authorized OR script not exist
+         */
+        if ($this->userCanAlter($script))
+        {
+            flash()->overlay('You are not authorized to access at this script', 'Sorry');
+            return redirect()->action('Script\ScriptController@index');
+        }
+        $script->delete();
     }
 }
