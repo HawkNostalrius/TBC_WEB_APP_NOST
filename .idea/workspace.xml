@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aabec374-9e4a-4cdf-af90-4b593960f330" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Script/ScriptController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Script/ScriptController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Middleware/ScriptMiddleware.php" afterPath="$PROJECT_DIR$/app/Http/Middleware/ScriptMiddleware.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/User.php" afterPath="$PROJECT_DIR$/app/Models/User.php" />
     </list>
     <ignored path="TBCWebApp.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,8 +27,8 @@
       <file leaf-file-name="ScriptController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Script/ScriptController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.13725491">
-              <caret line="98" column="11" selection-start-line="98" selection-start-column="11" selection-end-line="98" selection-end-column="11" />
+            <state vertical-scroll-proportion="0.8039216">
+              <caret line="168" column="36" selection-start-line="168" selection-start-column="36" selection-end-line="168" selection-end-column="36" />
               <folding>
                 <element signature="e#47#75#0#PHP" expanded="true" />
               </folding>
@@ -138,8 +135,8 @@
         <option value="$PROJECT_DIR$/resources/views/header.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2016_03_29_102936_create_role_tables.php" />
         <option value="$PROJECT_DIR$/app/Models/User.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Script/ScriptController.php" />
         <option value="$PROJECT_DIR$/app/Http/Middleware/ScriptMiddleware.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Script/ScriptController.php" />
       </list>
     </option>
   </component>
@@ -1324,8 +1321,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Script/ScriptController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.13725491">
-          <caret line="98" column="11" selection-start-line="98" selection-start-column="11" selection-end-line="98" selection-end-column="11" />
+        <state vertical-scroll-proportion="0.8039216">
+          <caret line="168" column="36" selection-start-line="168" selection-start-column="36" selection-end-line="168" selection-end-column="36" />
           <folding>
             <element signature="e#47#75#0#PHP" expanded="true" />
           </folding>

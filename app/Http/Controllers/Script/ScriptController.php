@@ -167,14 +167,6 @@ class ScriptController extends Controller
     public function destroy($id)
     {
         $script = Script::find($id);
-        /**
-         * Redirect if user is not authorized OR script not exist
-         */
-        if ($this->userCanAlter($script))
-        {
-            flash()->overlay('You are not authorized to access at this script', 'Sorry');
-            return redirect()->action('Script\ScriptController@index');
-        }
         $script->delete();
     }
 }
